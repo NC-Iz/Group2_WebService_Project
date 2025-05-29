@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sleep Need Estimator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <h1>Sleep Calculator</h1>
+    
+    <form action="HealthFitnessClient" method="post">
+        <input type="hidden" name="formType" value="sne" />
+        
+        <h2>Age Range</h2>
+        <select name="ageRange" required>
+            <option value="0-3 months">0-3 Months</option>
+            <option value="4-12 months">4-12 Months</option>
+            <option value="1-2 years">1-2 Years</option>
+            <option value="3-5 years">3-5 Years</option>
+            <option value="6-12 years">6-12 Years</option>
+            <option value="13-18 years">13-18 Years</option>
+            <option value="18-60 years">18-60 Years</option>
+            <option value="61-64 years">61-64 Years</option>
+            <option value="65+ years">65+ Years</option>
+        </select>
+        
+        <h2>Sleep Schedule</h2>
+        <input type="radio" name="scheduleType" value="wakeUp" checked> I want to wake up at...<br>
+        <input type="radio" name="scheduleType" value="goToBed"> I want to go to bed at...<br>
+        <br>
+        <input type="time" name="timeInput" required>
+        
+        <br><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>

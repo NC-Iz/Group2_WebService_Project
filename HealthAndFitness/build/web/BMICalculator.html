@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h2>BMI Calculator</h2>
+    <form action="HealthFitnessClient" method="post">
+        <input type="hidden" name="formType" value="bmi">
+        
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Weight (kg):</label><br>
+        <input type="number" name="weight" step="0.1" required><br><br>
+
+        <label>Height (cm):</label><br>
+        <input type="number" name="height" step="0.1" required><br><br>
+
+        <input type="submit" value="Calculate BMI">
+    </form>
+</body>
+</html>

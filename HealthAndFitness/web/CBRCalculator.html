@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calories Burned Calculator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <h2>Calories Burned Calculator</h2>
+    <form action="HealthFitnessClient" method="post">
+        <input type="hidden" name="formType" value="cbr" />
+
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Weight (kg):</label><br>
+        <input type="number" name="weight" step="0.1" required><br><br>
+
+        <label>Activity:</label><br>
+        <select name="activity" required>
+            <option value="" disabled selected>Please choose an activity</option>
+            <option value="walking">Walking</option>
+            <option value="running">Running</option>
+            <option value="cycling">Cycling</option>
+            <option value="swimming">Swimming</option>
+            <option value="weightlifting">Weightlifting</option>
+        </select><br><br>
+
+        <label>Duration (minutes):</label><br>
+        <input type="number" name="duration" step="0.1" required><br><br>
+
+        <input type="submit" value="Calculate Calories Burned">
+    </form>
+</body>
+</html>
