@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://service.HealthFitness.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service.HealthFitness.com/">
+
+<xs:element name="BasalMetabolicRate" type="tns:BasalMetabolicRate"/>
+
+<xs:element name="BasalMetabolicRateResponse" type="tns:BasalMetabolicRateResponse"/>
+
+<xs:element name="CaloricGoals" type="tns:CaloricGoals"/>
+
+<xs:element name="CaloricGoalsResponse" type="tns:CaloricGoalsResponse"/>
+
+<xs:element name="MacroDistribution" type="tns:MacroDistribution"/>
+
+<xs:element name="MacroDistributionResponse" type="tns:MacroDistributionResponse"/>
+
+<xs:element name="TotalDailyEnergyExpenditure" type="tns:TotalDailyEnergyExpenditure"/>
+
+<xs:element name="TotalDailyEnergyExpenditureResponse" type="tns:TotalDailyEnergyExpenditureResponse"/>
+
+<xs:complexType name="BasalMetabolicRate">
+<xs:sequence>
+<xs:element name="weightKG" type="xs:float"/>
+<xs:element name="heightCM" type="xs:float"/>
+<xs:element name="ageYears" type="xs:int"/>
+<xs:element name="gender" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="BasalMetabolicRateResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TotalDailyEnergyExpenditure">
+<xs:sequence>
+<xs:element name="bmr" type="xs:float"/>
+<xs:element name="activityLevel" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TotalDailyEnergyExpenditureResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="MacroDistribution">
+<xs:sequence>
+<xs:element name="calories" type="xs:float"/>
+<xs:element name="goal" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="MacroDistributionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CaloricGoals">
+<xs:sequence>
+<xs:element name="tdee" type="xs:float"/>
+<xs:element name="goalsCategory" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CaloricGoalsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -4,9 +4,17 @@
         <servlet-name>HealthFitnessClient</servlet-name>
         <servlet-class>com.HealthFitness.client.HealthFitnessClient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MacroCalculatorClient</servlet-name>
+        <servlet-class>com.HealthFitness.client.MacroCalculatorClient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HealthFitnessClient</servlet-name>
         <url-pattern>/HealthFitnessClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MacroCalculatorClient</servlet-name>
+        <url-pattern>/MacroCalculatorClient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Macro Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="MacroCalculatorClient" method="post">
+            Age: <input type="text" name="age"><br>
+            Gender: <input type="radio" name="gender" value="male" checked> Male
+                    <input type="radio" name="gender" value="female"> Female<br>
+            Height (cm): <input type="text" name="height"><br>
+            Weight (kg): <input type="text" name="weight"><br>
+            Activity: 
+            <select name="activity">
+                <option value="sedentary">Sedentary</option>
+                <option value="lightly active">Lightly Active</option>
+                <option value="moderately active">Moderately Active</option>
+                <option value="very active">Very Active</option>
+                <option value="extra active">Extra Active</option>
+            </select><br>
+            Goal: 
+            <select name="goal">
+                <option value="maintain">Maintain</option>
+                <option value="mild weight loss">Mild Weight Loss</option>
+                <option value="weight loss">Weight Loss</option>
+                <option value="extreme weight loss">Extreme Weight Loss</option>
+                <option value="mild weight gain">Mild Weight Gain</option>
+                <option value="weight gain">Weight Gain</option>
+                <option value="extreme weight gain">Extreme Weight Gain</option>
+            </select><br>
+            <input type="submit" value="Calculate">
+        </form>
+
+    </body>
+</html>

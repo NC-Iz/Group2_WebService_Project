@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/HealthAndFitness/HealthAndFitnessService?wsdl" uri="wsdl/localhost_8080/HealthAndFitness/HealthAndFitnessService.wsdl"/>
     <system systemId="http://localhost:8080/HealthAndFitness/HealthAndFitnessService?xsd=1" uri="wsdl/localhost_8080/HealthAndFitness/HealthAndFitnessService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/HealthAndFitness/MacroCalculatorService?wsdl" uri="wsdl/localhost_8080/HealthAndFitness/MacroCalculatorService.wsdl"/>
+    <system systemId="http://localhost:8080/HealthAndFitness/MacroCalculatorService?xsd=1" uri="wsdl/localhost_8080/HealthAndFitness/MacroCalculatorService.xsd_1.xsd"/>
 </catalog>
