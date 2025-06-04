@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
@@ -33,9 +35,35 @@ public class HealthFitnessClient extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-    try (PrintWriter out = response.getWriter()) {
+        HttpSession session = request.getSession();
+        try (PrintWriter out = response.getWriter()) {
         String formType = request.getParameter("formType");
         String result = "";
+        
+        if ("userinfo".equalsIgnoreCase(formType)) {
+            // This handles what your UserInfoServlet did:
+            String name = request.getParameter("name");
+            String ic = request.getParameter("ic");
+            String gender = request.getParameter("gender");
+            double weight = Double.parseDouble(request.getParameter("weight"));
+            double height = Double.parseDouble(request.getParameter("height"));
+            int age = calculateAgeFromIC(ic);
+
+            session.setAttribute("name", name);
+            session.setAttribute("gender", gender);
+            session.setAttribute("age", age);
+            session.setAttribute("weight", weight);
+            session.setAttribute("height", height);
+
+            // Redirect or show confirmation page
+            response.sendRedirect("index.html");
+            return;  // Stop further processing
+        }
+
+        // For other forms, fallback to session attributes if params missing
+        String userName = (String) session.getAttribute("name");
+        String userGender = (String) session.getAttribute("gender");
+        Integer userAge = (Integer) session.getAttribute("age");
 
         switch (formType) {
             case "bmi":
@@ -163,6 +191,32 @@ public class HealthFitnessClient extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
+    // Add this at the top, inside your HealthFitnessClient class:
+
+    private int calculateAgeFromIC(String ic) {
+    try {
+        // Remove all non-digit characters
+        String cleanedIC = ic.replaceAll("\\D", "");
+        if (cleanedIC.length() < 6) return 0; // invalid
+
+        String yearStr = cleanedIC.substring(0, 2);
+        String month = cleanedIC.substring(2, 4);
+        String day = cleanedIC.substring(4, 6);
+
+        int year = Integer.parseInt(yearStr);
+        int fullYear = (year <= 25) ? 2000 + year : 1900 + year;
+
+        java.time.LocalDate birthDate = java.time.LocalDate.of(fullYear, Integer.parseInt(month), Integer.parseInt(day));
+        return java.time.Period.between(birthDate, java.time.LocalDate.now()).getYears();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0;
+    }
+}
+
+
 
     private String calculateBFP(java.lang.String arg0, int arg1, double arg2, double arg3, double arg4, double arg5, double arg6) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
