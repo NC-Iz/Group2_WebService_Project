@@ -1,0 +1,76 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
+<%
+    String name = (String) session.getAttribute("name");
+    Double weight = (Double) session.getAttribute("weight");
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calories Burned Calculator</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .calculator-card {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="card calculator-card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0 text-center">Calories Burned Calculator</h2>
+            </div>
+            <div class="card-body">
+                <form action="HealthFitnessClient" method="post">
+                    <input type="hidden" name="formType" value="cbr">
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                               value="<%= name != null ? name : "" %>" required>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">Weight (kg):</label>
+                        <input type="number" class="form-control" id="weight" name="weight" step="0.1" min="1" 
+                               value="<%= weight != null ? weight : "" %>" required>
+                    </div>
+
+                    <!-- Activity -->
+                    <div class="mb-3">
+                        <label for="activity" class="form-label">Activity:</label>
+                        <select class="form-select" id="activity" name="activity" required>
+                            <option value="" disabled selected>Please choose an activity</option>
+                            <option value="walking">Walking</option>
+                            <option value="running">Running</option>
+                            <option value="cycling">Cycling</option>
+                            <option value="swimming">Swimming</option>
+                            <option value="weightlifting">Weightlifting</option>
+                        </select>
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="mb-4">
+                        <label for="duration" class="form-label">Duration (minutes):</label>
+                        <input type="number" class="form-control" id="duration" name="duration" step="1" min="1" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Calculate Calories Burned</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
