@@ -105,10 +105,22 @@ public class HealthFitnessClient extends HttpServlet {
                     double hip = gender.equalsIgnoreCase("female") ? Double.parseDouble(request.getParameter("hip")) : 0;
 
                     result = calculateBFPLocal(gender, age, weightBFP, heightBFP, waist, neck, hip);
+
+                    // Store to session for repopulation if needed
+                    session.setAttribute("gender", gender);
+                    session.setAttribute("age", age);
+                    session.setAttribute("weight", weightBFP);
+                    session.setAttribute("height", heightBFP);
+
+                    // Pass result back to JSP
+                    request.setAttribute("bfpResult", result);
+                    request.getRequestDispatcher("BFPCalculator.jsp").forward(request, response);
+                    return;
                 } catch (Exception e) {
-                    result = "Error calculating BFP: " + e.getMessage();
+                    request.setAttribute("error", "Error calculating BFP: " + e.getMessage());
+                    request.getRequestDispatcher("BFPCalculator.jsp").forward(request, response);
+                    return;
                 }
-                break;
 
             case "cbr":
                 // Updated part to include intensity
