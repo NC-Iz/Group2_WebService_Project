@@ -233,88 +233,85 @@ public String calculateCaloriesBurned(
     }
     
     @WebMethod(operationName = "calculateSleepTimes")
-    public String calculateSleepTimes(@WebParam(name = "ageRange") String ageRange,
-                                    @WebParam(name = "scheduleType") String scheduleType,
-                                    @WebParam(name = "timeInput") String timeInput) {
+public String calculateSleepTimes(@WebParam(name = "ageRange") String ageRange,
+                                @WebParam(name = "scheduleType") String scheduleType,
+                                @WebParam(name = "timeInput") String timeInput) {
 
-        StringBuilder result = new StringBuilder();
-        result.append("<div style='font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto;'>");
-        result.append("<h1 style='color: #2c3e50;'>Sleep Calculator</h1>");
-        result.append("<p style='color: #7f8c8d;'>It typically takes 15 minutes to fall asleep.</p>");
+    StringBuilder result = new StringBuilder();
+    result.append("<section class='sleep-results' style='font-family: Arial, sans-serif; margin-top: 20px;'>");
+    result.append("<div style='border: 1px solid #ccc; border-radius: 10px; overflow: hidden;'>");
+    result.append("<header style='background-color: #007bff; color: white; padding: 15px;'>");
+    result.append("<h3 style='margin: 0;'>Sleep Calculation Results</h3>");
+    result.append("</header>");
+    result.append("<div style='padding: 20px;'>");
+    result.append("<p style='color: #6c757d;'>It typically takes 15 minutes to fall asleep.</p>");
 
-        // Get the correct sleep range for the age group
-        int[] range = ageSleepMap.getOrDefault(ageRange, new int[]{7, 9});
-        int minSleep = range[0];
-        int maxSleep = range[1];
+    int[] range = ageSleepMap.getOrDefault(ageRange, new int[]{7, 9});
+    int minSleep = range[0];
+    int maxSleep = range[1];
 
-        String[] timeParts = timeInput.split(":");
-        int hours = Integer.parseInt(timeParts[0]);
-        int minutes = Integer.parseInt(timeParts[1]);
-        int inputTotalMinutes = hours * 60 + minutes;
+    String[] timeParts = timeInput.split(":");
+    int hours = Integer.parseInt(timeParts[0]);
+    int minutes = Integer.parseInt(timeParts[1]);
+    int inputTotalMinutes = hours * 60 + minutes;
 
-        if (scheduleType.equalsIgnoreCase("wakeUp")) {
-            result.append("<h3 style='color: #3498db;'>If you want to wake up at ")
-                  .append(formatTime24to12(timeInput))
-                  .append(", try falling asleep between these times:</h3>");
+    if (scheduleType.equalsIgnoreCase("wakeUp")) {
+        result.append("<h4 style='margin-top: 0;'>If you want to wake up at <strong>")
+              .append(formatTime24to12(timeInput))
+              .append("</strong>, aim to fall asleep at:</h4>");
 
-            // Calculate bedtimes based on the age-specific sleep range
-            int earliestBedtime = inputTotalMinutes - (maxSleep * 60) - 15;
-            int latestBedtime = inputTotalMinutes - (minSleep * 60) - 15;
+        int earliestBedtime = inputTotalMinutes - (maxSleep * 60) - 15;
+        int latestBedtime = inputTotalMinutes - (minSleep * 60) - 15;
 
-            result.append("<div style='background-color: #f8f9fa; padding: 15px; border-radius: 5px;'>");
-            result.append("<p><strong>Earliest bedtime (for ").append(maxSleep).append(" hours sleep):</strong> ")
-                  .append(formatTime(earliestBedtime)).append("</p>");
-            result.append("<p><strong>Latest bedtime (for ").append(minSleep).append(" hours sleep):</strong> ")
-                  .append(formatTime(latestBedtime)).append("</p>");
-            result.append("</div>");
+        result.append("<ul style='list-style: none; padding-left: 0;'>");
+        result.append("<li style='margin-bottom: 8px;'>🕒 <strong>").append(maxSleep).append(" hrs sleep</strong>: ")
+              .append("<span style='color: #333;'>").append(formatTime(earliestBedtime)).append("</span></li>");
+        result.append("<li style='margin-bottom: 8px;'>🕒 <strong>").append(minSleep).append(" hrs sleep</strong>: ")
+              .append("<span style='color: #333;'>").append(formatTime(latestBedtime)).append("</span></li>");
+        result.append("</ul>");
 
-            // Calculate optimal sleep time (midpoint of range)
-            int optimalSleep = (maxSleep + minSleep) / 2;
-            int optimalBedtime = inputTotalMinutes - (optimalSleep * 60) - 15;
-            result.append("<p style='margin-top: 20px;'><strong>Suggested optimal bedtime (")
-                  .append(optimalSleep).append(" hours sleep):</strong> ")
-                  .append(formatTime(optimalBedtime)).append("</p>");
+        int optimalSleep = (maxSleep + minSleep) / 2;
+        int optimalBedtime = inputTotalMinutes - (optimalSleep * 60) - 15;
+        result.append("<p><strong>✅ Optimal bedtime (").append(optimalSleep).append(" hrs):</strong> ")
+              .append("<span style='color: #007bff;'>").append(formatTime(optimalBedtime)).append("</span></p>");
 
-        } else { // bedTime calculation
-            result.append("<h3 style='color: #3498db;'>If you go to bed at ")
-                  .append(formatTime24to12(timeInput))
-                  .append(", try waking up between these times:</h3>");
+    } else {
+        result.append("<h4 style='margin-top: 0;'>If you go to bed at <strong>")
+              .append(formatTime24to12(timeInput))
+              .append("</strong>, aim to wake up at:</h4>");
 
-            // Calculate wake times based on the age-specific sleep range
-            int earliestWakeTime = inputTotalMinutes + (minSleep * 60) + 15;
-            int latestWakeTime = inputTotalMinutes + (maxSleep * 60) + 15;
+        int earliestWakeTime = inputTotalMinutes + (minSleep * 60) + 15;
+        int latestWakeTime = inputTotalMinutes + (maxSleep * 60) + 15;
 
-            result.append("<div style='background-color: #f8f9fa; padding: 15px; border-radius: 5px;'>");
-            result.append("<p><strong>Earliest wake time (after ").append(minSleep).append(" hours sleep):</strong> ")
-                  .append(formatTime(earliestWakeTime)).append("</p>");
-            result.append("<p><strong>Latest wake time (after ").append(maxSleep).append(" hours sleep):</strong> ")
-                  .append(formatTime(latestWakeTime)).append("</p>");
-            result.append("</div>");
+        result.append("<ul style='list-style: none; padding-left: 0;'>");
+        result.append("<li style='margin-bottom: 8px;'>🕒 <strong>").append(minSleep).append(" hrs sleep</strong>: ")
+              .append("<span style='color: #333;'>").append(formatTime(earliestWakeTime)).append("</span></li>");
+        result.append("<li style='margin-bottom: 8px;'>🕒 <strong>").append(maxSleep).append(" hrs sleep</strong>: ")
+              .append("<span style='color: #333;'>").append(formatTime(latestWakeTime)).append("</span></li>");
+        result.append("</ul>");
 
-            // Calculate optimal wake time (midpoint of range)
-            int optimalSleep = (maxSleep + minSleep) / 2;
-            int optimalWakeTime = inputTotalMinutes + (optimalSleep * 60) + 15;
-            result.append("<p style='margin-top: 20px;'><strong>Suggested optimal wake time (")
-                  .append(optimalSleep).append(" hours sleep):</strong> ")
-                  .append(formatTime(optimalWakeTime)).append("</p>");
-        }
-
-        // Show the recommended sleep range for the age group
-        result.append("<div style='margin-top: 30px;'>");
-        result.append("<h4>Recommended Sleep Range for ").append(ageRange).append(":</h4>");
-        result.append("<p>").append(minSleep).append(" to ").append(maxSleep).append(" hours per day</p>");
-        result.append("</div>");
-
-        result.append("</div>");
-        return result.toString();
+        int optimalSleep = (maxSleep + minSleep) / 2;
+        int optimalWakeTime = inputTotalMinutes + (optimalSleep * 60) + 15;
+        result.append("<p><strong>✅ Optimal wake time (").append(optimalSleep).append(" hrs):</strong> ")
+              .append("<span style='color: #007bff;'>").append(formatTime(optimalWakeTime)).append("</span></p>");
     }
+
+    result.append("<div style='margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;'>");
+    result.append("<h5>📌 Recommended Sleep Range for ").append(ageRange).append(":</h5>");
+    result.append("<p style='margin: 0; font-weight: bold;'>").append(minSleep).append(" to ").append(maxSleep).append(" hours per day</p>");
+    result.append("</div>");
+
+    result.append("</div></div></section>");
+    return result.toString();
+}
+
 
     private String formatTime(int totalMinutes) {
         totalMinutes = (totalMinutes + 1440) % 1440;
         int hours = totalMinutes / 60;
         int mins = totalMinutes % 60;
         String period = (hours >= 12) ? "PM" : "AM";
-        hours = hours % 12;
+        hours %= 12;
         if (hours == 0) hours = 12;
         return String.format("%02d:%02d %s", hours, mins, period);
     }
@@ -324,10 +321,11 @@ public String calculateCaloriesBurned(
         int hours = Integer.parseInt(parts[0]);
         int minutes = Integer.parseInt(parts[1]);
         String period = (hours >= 12) ? "PM" : "AM";
-        hours = hours % 12;
+        hours %= 12;
         if (hours == 0) hours = 12;
         return String.format("%02d:%02d %s", hours, minutes, period);
     }
+}
     
 
-}
+
