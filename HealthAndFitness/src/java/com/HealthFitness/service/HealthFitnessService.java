@@ -78,38 +78,74 @@ public String calculateCaloriesBurned(
         @WebParam(name = "name") String name,
         @WebParam(name = "weight") double weight,
         @WebParam(name = "activity") String activity,
-        @WebParam(name = "durationMinutes") int durationMinutes) {
+        @WebParam(name = "durationMinutes") int durationMinutes,
+        @WebParam(name = "intensity") String intensity) {
 
-    if (weight <= 0 || durationMinutes <= 0 || activity == null || activity.isEmpty()) {
-        return "SOAP Fault: Invalid input. Please provide valid weight, duration, and activity.";
+    // Input validation
+    if (weight <= 0 || durationMinutes <= 0 || 
+        activity == null || activity.isEmpty() ||
+        intensity == null || intensity.isEmpty()) {
+        return "SOAP Fault: Invalid input. Please provide valid weight, duration, activity, and intensity (low/moderate/high).";
     }
 
     double met;
     switch (activity.toLowerCase()) {
         case "walking":
-            met = 3.5;
+            switch (intensity.toLowerCase()) {
+                case "low":      met = 2.5; break;
+                case "moderate": met = 3.5; break;
+                case "high":     met = 5.0; break;
+                default:         return "SOAP Fault: Invalid intensity for walking. Use low/moderate/high.";
+            }
             break;
+            
         case "running":
-            met = 8.3;
+            switch (intensity.toLowerCase()) {
+                case "low":      met = 6.0; break;
+                case "moderate": met = 8.5; break;
+                case "high":     met = 12.0; break;
+                default:        return "SOAP Fault: Invalid intensity for running. Use low/moderate/high.";
+            }
             break;
+            
         case "cycling":
-            met = 6.8;
+            switch (intensity.toLowerCase()) {
+                case "low":      met = 4.0; break;
+                case "moderate": met = 6.0; break;
+                case "high":     met = 10.0; break;
+                default:         return "SOAP Fault: Invalid intensity for cycling. Use low/moderate/high.";
+            }
             break;
+            
         case "swimming":
-            met = 7.0;
+            switch (intensity.toLowerCase()) {
+                case "low":      met = 5.0; break;
+                case "moderate": met = 7.0; break;
+                case "high":     met = 10.0; break;
+                default:        return "SOAP Fault: Invalid intensity for swimming. Use low/moderate/high.";
+            }
             break;
+            
         case "weightlifting":
-            met = 3.0;
+            switch (intensity.toLowerCase()) {
+                case "low":      met = 3.0; break;
+                case "moderate": met = 4.5; break;
+                case "high":     met = 6.0; break;
+                default:        return "SOAP Fault: Invalid intensity for weightlifting. Use low/moderate/high.";
+            }
             break;
+            
         default:
-            return "SOAP Fault: Unsupported activity. Supported activities are walking, running, cycling, swimming, and weightlifting.";
+            return "SOAP Fault: Unsupported activity. Supported activities: walking, running, cycling, swimming, weightlifting.";
     }
 
-    double durationHours = durationMinutes / 60.0;
-    double caloriesBurned = met * weight * durationHours;
+    // Calculate calories (using standard MET formula)
+    double caloriesBurned = met * weight * (durationMinutes / 60.0);
 
-    return String.format("Hello %s, you burned approximately %.2f calories after %d minutes of %s.",
-            name, caloriesBurned, durationMinutes, activity.toLowerCase());
+    return String.format(
+        "%s burned %.2f calories during %d minutes of %s (%s intensity).",
+        name, caloriesBurned, durationMinutes, activity.toLowerCase(), intensity.toLowerCase()
+    );
 }
 
     @WebMethod

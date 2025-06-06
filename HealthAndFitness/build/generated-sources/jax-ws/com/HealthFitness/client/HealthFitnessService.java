@@ -47,6 +47,7 @@ public interface HealthFitnessService {
 
     /**
      * 
+     * @param intensity
      * @param durationMinutes
      * @param activity
      * @param name
@@ -67,7 +68,9 @@ public interface HealthFitnessService {
         @WebParam(name = "activity", targetNamespace = "")
         String activity,
         @WebParam(name = "durationMinutes", targetNamespace = "")
-        int durationMinutes);
+        int durationMinutes,
+        @WebParam(name = "intensity", targetNamespace = "")
+        String intensity);
 
     /**
      * 

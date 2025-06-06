@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/HealthAndFitness/HealthAndFitnessService?wsdl" uri="src/conf/xml-resources/web-service-references/HealthAndFitnessService/wsdl/localhost_8080/HealthAndFitness/HealthAndFitnessService.wsdl"/>
-    <system systemId="http://localhost:8080/HealthAndFitness/HealthAndFitnessService?xsd=1" uri="src/conf/xml-resources/web-service-references/HealthAndFitnessService/wsdl/localhost_8080/HealthAndFitness/HealthAndFitnessService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/HealthAndFitness/MacroCalculatorService?wsdl" uri="src/conf/xml-resources/web-service-references/MacroCalculatorService/wsdl/localhost_8080/HealthAndFitness/MacroCalculatorService.wsdl"/>
     <system systemId="http://localhost:8080/HealthAndFitness/MacroCalculatorService?xsd=1" uri="src/conf/xml-resources/web-service-references/MacroCalculatorService/wsdl/localhost_8080/HealthAndFitness/MacroCalculatorService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/HealthAndFitness/HealthAndFitnessService?wsdl" uri="src/conf/xml-resources/web-service-references/HealthAndFitnessService/wsdl/localhost_8080/HealthAndFitness/HealthAndFitnessService.wsdl"/>
+    <system systemId="http://localhost:8080/HealthAndFitness/HealthAndFitnessService?xsd=1" uri="src/conf/xml-resources/web-service-references/HealthAndFitnessService/wsdl/localhost_8080/HealthAndFitness/HealthAndFitnessService.xsd_1.xsd"/>
 </catalog>

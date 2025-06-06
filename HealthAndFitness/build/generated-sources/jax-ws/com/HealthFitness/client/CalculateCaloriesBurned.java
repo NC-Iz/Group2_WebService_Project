@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="activity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="durationMinutes" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="intensity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "weight",
     "activity",
-    "durationMinutes"
+    "durationMinutes",
+    "intensity"
 })
 public class CalculateCaloriesBurned {
 
@@ -41,6 +43,7 @@ public class CalculateCaloriesBurned {
     protected double weight;
     protected String activity;
     protected int durationMinutes;
+    protected String intensity;
 
     /**
      * Gets the value of the name property.
@@ -120,6 +123,30 @@ public class CalculateCaloriesBurned {
      */
     public void setDurationMinutes(int value) {
         this.durationMinutes = value;
+    }
+
+    /**
+     * Gets the value of the intensity property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIntensity() {
+        return intensity;
+    }
+
+    /**
+     * Sets the value of the intensity property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIntensity(String value) {
+        this.intensity = value;
     }
 
 }
