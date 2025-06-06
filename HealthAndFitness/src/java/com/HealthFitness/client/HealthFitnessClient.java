@@ -143,58 +143,26 @@ public class HealthFitnessClient extends HttpServlet {
                 
 
             case "sne":
-                String ageRange = request.getParameter("ageRange");
-                String scheduleType = request.getParameter("scheduleType");
-                String timeInput = request.getParameter("timeInput");
-                result = calculateSleepTimes(ageRange, scheduleType, timeInput);
-                break;
+                try {
+                    String ageRange = request.getParameter("ageRange");
+                    String scheduleType = request.getParameter("scheduleType");
+                    String timeInput = request.getParameter("timeInput");
+
+                    result = calculateSleepTimes(ageRange, scheduleType, timeInput);
+
+                    // Pass result back to JSP
+                    request.setAttribute("sneResult", result);
+                    request.getRequestDispatcher("SNECalculator.jsp").forward(request, response);
+                    return;
+                } catch (Exception e) {
+                    request.setAttribute("error", "Error calculating sleep times: " + e.getMessage());
+                    request.getRequestDispatcher("SNECalculator.jsp").forward(request, response);
+                    return;
+                }
 
             default:
                 result = "Invalid form type.";
         }
-
-        // Output the result
-        // In your processRequest method, replace the output section with:
-        out.println("<!DOCTYPE html>");
-        out.println("<html lang='en'>");
-        out.println("<head>");
-        out.println("    <meta charset='UTF-8'>");
-        out.println("    <meta name='viewport' content='width=device-width, initial-scale=1'>");
-        out.println("    <title>Health Result</title>");
-        out.println("    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>");
-        out.println("    <style>");
-        out.println("        .result-card { max-width: 600px; margin: 2rem auto; }");
-        out.println("        .result-text { word-wrap: break-word; white-space: pre-wrap; }");
-        out.println("    </style>");
-        out.println("</head>");
-        out.println("<body class='bg-light'>");
-        out.println("    <div class='container'>");
-        out.println("        <div class='card result-card mt-5'>");
-        out.println("            <div class='card-header bg-primary text-white'>");
-        out.println("                <h2 class='mb-0'>Result</h2>");
-        out.println("            </div>");
-        out.println("            <div class='card-body'>");
-
-        if (result.startsWith("<h3>") || result.contains("<p>")) {
-            // For HTML-formatted results (like BFP)
-            out.println(result.replace("<h3>", "<h3 class='card-title mb-4'>")
-                            .replace("<p>", "<p class='mb-3'>")
-                            .replace("<strong>", "<span class='fw-bold text-primary'>")
-                            .replace("</strong>", "</span>"));
-        } else {
-            // For plain text results (like BMI)
-            out.println("                <div class='result-text'>" + result + "</div>");
-        }
-
-        out.println("                <div class='d-grid mt-4'>");
-        out.println("                    <a href='index.html' class='btn btn-primary'>Go Back</a>");
-        out.println("                </div>");
-        out.println("            </div>");
-        out.println("        </div>");
-        out.println("    </div>");
-        out.println("    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>");
-        out.println("</body>");
-        out.println("</html>");
     }
     }
 
