@@ -24,14 +24,14 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _BasalMetabolicRate_QNAME = new QName("http://service.HealthFitness.com/", "BasalMetabolicRate");
-    private final static QName _TotalDailyEnergyExpenditureResponse_QNAME = new QName("http://service.HealthFitness.com/", "TotalDailyEnergyExpenditureResponse");
-    private final static QName _BasalMetabolicRateResponse_QNAME = new QName("http://service.HealthFitness.com/", "BasalMetabolicRateResponse");
-    private final static QName _CaloricGoalsResponse_QNAME = new QName("http://service.HealthFitness.com/", "CaloricGoalsResponse");
-    private final static QName _MacroDistributionResponse_QNAME = new QName("http://service.HealthFitness.com/", "MacroDistributionResponse");
-    private final static QName _CaloricGoals_QNAME = new QName("http://service.HealthFitness.com/", "CaloricGoals");
-    private final static QName _TotalDailyEnergyExpenditure_QNAME = new QName("http://service.HealthFitness.com/", "TotalDailyEnergyExpenditure");
-    private final static QName _MacroDistribution_QNAME = new QName("http://service.HealthFitness.com/", "MacroDistribution");
+    private final static QName _CalculateSleepTimesResponse_QNAME = new QName("http://service.HealthFitness.com/", "calculateSleepTimesResponse");
+    private final static QName _CalculateBMIResponse_QNAME = new QName("http://service.HealthFitness.com/", "calculateBMIResponse");
+    private final static QName _CalculateCaloriesBurnedResponse_QNAME = new QName("http://service.HealthFitness.com/", "calculateCaloriesBurnedResponse");
+    private final static QName _CalculateBMI_QNAME = new QName("http://service.HealthFitness.com/", "calculateBMI");
+    private final static QName _CalculateBFP_QNAME = new QName("http://service.HealthFitness.com/", "calculateBFP");
+    private final static QName _CalculateCaloriesBurned_QNAME = new QName("http://service.HealthFitness.com/", "calculateCaloriesBurned");
+    private final static QName _CalculateSleepTimes_QNAME = new QName("http://service.HealthFitness.com/", "calculateSleepTimes");
+    private final static QName _CalculateBFPResponse_QNAME = new QName("http://service.HealthFitness.com/", "calculateBFPResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.HealthFitness.client
@@ -41,139 +41,139 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BasalMetabolicRate }
+     * Create an instance of {@link CalculateSleepTimesResponse }
      * 
      */
-    public BasalMetabolicRate createBasalMetabolicRate() {
-        return new BasalMetabolicRate();
+    public CalculateSleepTimesResponse createCalculateSleepTimesResponse() {
+        return new CalculateSleepTimesResponse();
     }
 
     /**
-     * Create an instance of {@link TotalDailyEnergyExpenditureResponse }
+     * Create an instance of {@link CalculateBMIResponse }
      * 
      */
-    public TotalDailyEnergyExpenditureResponse createTotalDailyEnergyExpenditureResponse() {
-        return new TotalDailyEnergyExpenditureResponse();
+    public CalculateBMIResponse createCalculateBMIResponse() {
+        return new CalculateBMIResponse();
     }
 
     /**
-     * Create an instance of {@link BasalMetabolicRateResponse }
+     * Create an instance of {@link CalculateCaloriesBurnedResponse }
      * 
      */
-    public BasalMetabolicRateResponse createBasalMetabolicRateResponse() {
-        return new BasalMetabolicRateResponse();
+    public CalculateCaloriesBurnedResponse createCalculateCaloriesBurnedResponse() {
+        return new CalculateCaloriesBurnedResponse();
     }
 
     /**
-     * Create an instance of {@link CaloricGoalsResponse }
+     * Create an instance of {@link CalculateBMI }
      * 
      */
-    public CaloricGoalsResponse createCaloricGoalsResponse() {
-        return new CaloricGoalsResponse();
+    public CalculateBMI createCalculateBMI() {
+        return new CalculateBMI();
     }
 
     /**
-     * Create an instance of {@link MacroDistributionResponse }
+     * Create an instance of {@link CalculateBFP }
      * 
      */
-    public MacroDistributionResponse createMacroDistributionResponse() {
-        return new MacroDistributionResponse();
+    public CalculateBFP createCalculateBFP() {
+        return new CalculateBFP();
     }
 
     /**
-     * Create an instance of {@link CaloricGoals }
+     * Create an instance of {@link CalculateCaloriesBurned }
      * 
      */
-    public CaloricGoals createCaloricGoals() {
-        return new CaloricGoals();
+    public CalculateCaloriesBurned createCalculateCaloriesBurned() {
+        return new CalculateCaloriesBurned();
     }
 
     /**
-     * Create an instance of {@link TotalDailyEnergyExpenditure }
+     * Create an instance of {@link CalculateSleepTimes }
      * 
      */
-    public TotalDailyEnergyExpenditure createTotalDailyEnergyExpenditure() {
-        return new TotalDailyEnergyExpenditure();
+    public CalculateSleepTimes createCalculateSleepTimes() {
+        return new CalculateSleepTimes();
     }
 
     /**
-     * Create an instance of {@link MacroDistribution }
+     * Create an instance of {@link CalculateBFPResponse }
      * 
      */
-    public MacroDistribution createMacroDistribution() {
-        return new MacroDistribution();
+    public CalculateBFPResponse createCalculateBFPResponse() {
+        return new CalculateBFPResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BasalMetabolicRate }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateSleepTimesResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "BasalMetabolicRate")
-    public JAXBElement<BasalMetabolicRate> createBasalMetabolicRate(BasalMetabolicRate value) {
-        return new JAXBElement<BasalMetabolicRate>(_BasalMetabolicRate_QNAME, BasalMetabolicRate.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateSleepTimesResponse")
+    public JAXBElement<CalculateSleepTimesResponse> createCalculateSleepTimesResponse(CalculateSleepTimesResponse value) {
+        return new JAXBElement<CalculateSleepTimesResponse>(_CalculateSleepTimesResponse_QNAME, CalculateSleepTimesResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TotalDailyEnergyExpenditureResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateBMIResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "TotalDailyEnergyExpenditureResponse")
-    public JAXBElement<TotalDailyEnergyExpenditureResponse> createTotalDailyEnergyExpenditureResponse(TotalDailyEnergyExpenditureResponse value) {
-        return new JAXBElement<TotalDailyEnergyExpenditureResponse>(_TotalDailyEnergyExpenditureResponse_QNAME, TotalDailyEnergyExpenditureResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateBMIResponse")
+    public JAXBElement<CalculateBMIResponse> createCalculateBMIResponse(CalculateBMIResponse value) {
+        return new JAXBElement<CalculateBMIResponse>(_CalculateBMIResponse_QNAME, CalculateBMIResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BasalMetabolicRateResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateCaloriesBurnedResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "BasalMetabolicRateResponse")
-    public JAXBElement<BasalMetabolicRateResponse> createBasalMetabolicRateResponse(BasalMetabolicRateResponse value) {
-        return new JAXBElement<BasalMetabolicRateResponse>(_BasalMetabolicRateResponse_QNAME, BasalMetabolicRateResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateCaloriesBurnedResponse")
+    public JAXBElement<CalculateCaloriesBurnedResponse> createCalculateCaloriesBurnedResponse(CalculateCaloriesBurnedResponse value) {
+        return new JAXBElement<CalculateCaloriesBurnedResponse>(_CalculateCaloriesBurnedResponse_QNAME, CalculateCaloriesBurnedResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CaloricGoalsResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateBMI }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "CaloricGoalsResponse")
-    public JAXBElement<CaloricGoalsResponse> createCaloricGoalsResponse(CaloricGoalsResponse value) {
-        return new JAXBElement<CaloricGoalsResponse>(_CaloricGoalsResponse_QNAME, CaloricGoalsResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateBMI")
+    public JAXBElement<CalculateBMI> createCalculateBMI(CalculateBMI value) {
+        return new JAXBElement<CalculateBMI>(_CalculateBMI_QNAME, CalculateBMI.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MacroDistributionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateBFP }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "MacroDistributionResponse")
-    public JAXBElement<MacroDistributionResponse> createMacroDistributionResponse(MacroDistributionResponse value) {
-        return new JAXBElement<MacroDistributionResponse>(_MacroDistributionResponse_QNAME, MacroDistributionResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateBFP")
+    public JAXBElement<CalculateBFP> createCalculateBFP(CalculateBFP value) {
+        return new JAXBElement<CalculateBFP>(_CalculateBFP_QNAME, CalculateBFP.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CaloricGoals }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateCaloriesBurned }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "CaloricGoals")
-    public JAXBElement<CaloricGoals> createCaloricGoals(CaloricGoals value) {
-        return new JAXBElement<CaloricGoals>(_CaloricGoals_QNAME, CaloricGoals.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateCaloriesBurned")
+    public JAXBElement<CalculateCaloriesBurned> createCalculateCaloriesBurned(CalculateCaloriesBurned value) {
+        return new JAXBElement<CalculateCaloriesBurned>(_CalculateCaloriesBurned_QNAME, CalculateCaloriesBurned.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TotalDailyEnergyExpenditure }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateSleepTimes }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "TotalDailyEnergyExpenditure")
-    public JAXBElement<TotalDailyEnergyExpenditure> createTotalDailyEnergyExpenditure(TotalDailyEnergyExpenditure value) {
-        return new JAXBElement<TotalDailyEnergyExpenditure>(_TotalDailyEnergyExpenditure_QNAME, TotalDailyEnergyExpenditure.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateSleepTimes")
+    public JAXBElement<CalculateSleepTimes> createCalculateSleepTimes(CalculateSleepTimes value) {
+        return new JAXBElement<CalculateSleepTimes>(_CalculateSleepTimes_QNAME, CalculateSleepTimes.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MacroDistribution }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculateBFPResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "MacroDistribution")
-    public JAXBElement<MacroDistribution> createMacroDistribution(MacroDistribution value) {
-        return new JAXBElement<MacroDistribution>(_MacroDistribution_QNAME, MacroDistribution.class, null, value);
+    @XmlElementDecl(namespace = "http://service.HealthFitness.com/", name = "calculateBFPResponse")
+    public JAXBElement<CalculateBFPResponse> createCalculateBFPResponse(CalculateBFPResponse value) {
+        return new JAXBElement<CalculateBFPResponse>(_CalculateBFPResponse_QNAME, CalculateBFPResponse.class, null, value);
     }
 
 }

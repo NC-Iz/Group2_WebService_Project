@@ -50,6 +50,7 @@
 <xs:element name="weight" type="xs:double"/>
 <xs:element name="activity" type="xs:string" minOccurs="0"/>
 <xs:element name="durationMinutes" type="xs:int"/>
+<xs:element name="intensity" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

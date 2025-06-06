@@ -111,12 +111,24 @@ public class HealthFitnessClient extends HttpServlet {
                 break;
 
             case "cbr":
-                String nameCal = request.getParameter("name");
-                double weightCal = Double.parseDouble(request.getParameter("weight"));
-                String activity = request.getParameter("activity");
-                int duration = Integer.parseInt(request.getParameter("duration"));
-                result = calculateCaloriesBurned(nameCal, weightCal, activity, duration);
-                break;
+                // Updated part to include intensity
+                    String nameCal = request.getParameter("name");
+                    double weightCal = Double.parseDouble(request.getParameter("weight"));
+                    String activity = request.getParameter("activity");
+                    int duration = Integer.parseInt(request.getParameter("duration"));
+                    String intensity = request.getParameter("intensity");
+
+                    result = calculateCaloriesBurned(nameCal, weightCal, activity, duration, intensity);
+
+                    // Store to session for repopulation if needed
+                    session.setAttribute("name", nameCal);
+                    session.setAttribute("weight", weightCal);
+
+                    // Pass result back to JSP
+                    request.setAttribute("cbrResult", result);
+                    request.getRequestDispatcher("CBRCalculator.jsp").forward(request, response);
+                    return;
+                
 
             case "sne":
                 String ageRange = request.getParameter("ageRange");
@@ -253,11 +265,11 @@ public class HealthFitnessClient extends HttpServlet {
         return port.calculateBMI(name, weight, heightCm);
     }
 
-    private String calculateCaloriesBurned(java.lang.String name, double weight, java.lang.String activity, int duration) {
+    private String calculateCaloriesBurned(java.lang.String name, double weight, java.lang.String activity, int durationMinutes, java.lang.String intensity) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         com.HealthFitness.client.HealthFitnessService port = service.getHealthFitnessServicePort();
-        return port.calculateCaloriesBurned(name, weight, activity, duration);
+        return port.calculateCaloriesBurned(name, weight, activity, durationMinutes, intensity);
     }
 
     private String calculateSleepTimes(java.lang.String ageRange, java.lang.String scheduleType, java.lang.String timeInput) {

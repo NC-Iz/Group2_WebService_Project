@@ -79,21 +79,23 @@
             %>
                 <div class="alert <%= alertClass %>">
                     <p class="mb-0"><%= bmiResult %></p>
+                </div>              
+            <%
+                }
+            %>
+            <div class="card mt-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">User Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Name:</strong> <%= name != null ? name : "N/A" %></p>
+                        <p><strong>ID:</strong> <%= ic != null ? ic : "N/A" %></p>
+                        <p><strong>Gender:</strong> <%= gender != null ? gender : "N/A" %></p>
+                        <p><strong>Age:</strong> <%= age != null ? age : "N/A" %></p>
+                        <p><strong>Weight:</strong> <%= weight != null ? weight + " kg" : "N/A" %></p>
+                        <p><strong>Height:</strong> <%= height != null ? height + " cm" : "N/A" %></p>
+                    </div>
                 </div>
-                
-                <div class="card mt-4">
-    <div class="card-header bg-secondary text-white">
-        <h5 class="mb-0">User Information</h5>
-    </div>
-    <div class="card-body">
-        <p><strong>Name:</strong> <%= name != null ? name : "N/A" %></p>
-        <p><strong>ID:</strong> <%= ic != null ? ic : "N/A" %></p>
-        <p><strong>Gender:</strong> <%= gender != null ? gender : "N/A" %></p>
-        <p><strong>Age:</strong> <%= age != null ? age : "N/A" %></p>
-        <p><strong>Weight:</strong> <%= weight != null ? weight + " kg" : "N/A" %></p>
-        <p><strong>Height:</strong> <%= height != null ? height + " cm" : "N/A" %></p>
-    </div>
-</div>
                 
                 <%-- BMI Information Section --%>
                
@@ -218,9 +220,6 @@
                         </div>
                     </div>
                 </div>
-            <%
-                }
-            %>
         </div>
     </div>
 
