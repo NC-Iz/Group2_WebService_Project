@@ -51,14 +51,22 @@ public class HealthFitnessService {
         double bmi = weight / (heightInMeters * heightInMeters);
         String category;
 
-        if (bmi < 18.5) {
-            category = "Underweight";
+        if (bmi < 16) {
+            category = "Severe Thinness";
+        } else if (bmi < 17) {
+            category = "Moderate Thinness";
+        } else if (bmi < 18.5) {
+            category = "Mild Thinness";
         } else if (bmi < 25) {
-            category = "Normal weight";
+            category = "Normal";
         } else if (bmi < 30) {
             category = "Overweight";
+        } else if (bmi < 35) {
+            category = "Obese Class I";
+        } else if (bmi < 40) {
+            category = "Obese Class II";
         } else {
-            category = "Obese";
+            category = "Obese Class III";
         }
 
         return "Hello " + name + ", your BMI is " + String.format("%.2f", bmi) +

@@ -52,6 +52,7 @@ public class HealthFitnessClient extends HttpServlet {
             session.setAttribute("name", name);
             session.setAttribute("gender", gender);
             session.setAttribute("age", age);
+            session.setAttribute("ic", ic);
             session.setAttribute("weight", weight);
             session.setAttribute("height", height);
 
@@ -66,13 +67,33 @@ public class HealthFitnessClient extends HttpServlet {
         Integer userAge = (Integer) session.getAttribute("age");
 
         switch (formType) {
+            
             case "bmi":
-                String nameBMI = request.getParameter("name");
-                double weight = Double.parseDouble(request.getParameter("weight"));
-                double height = Double.parseDouble(request.getParameter("height"));
-                result = calculateBMI(nameBMI, weight, height);
-                break;
-
+                try {
+            String nameBMI = request.getParameter("name");
+            double weight = Double.parseDouble(request.getParameter("weight"));
+            double height = Double.parseDouble(request.getParameter("height"));
+            
+            // Call the web service
+            result = calculateBMI(nameBMI, weight, height);
+            
+            // Store values in request attributes for the JSP
+            request.setAttribute("bmiResult", result);
+            request.setAttribute("userName", nameBMI);
+            
+            // Also store in session for form repopulation
+            session.setAttribute("weight", weight);
+            session.setAttribute("height", height);
+            
+            // Forward back to the JSP
+            request.getRequestDispatcher("BMICalculator.jsp").forward(request, response);
+            return; // Important to return after forward
+        } catch (Exception e) {
+            request.setAttribute("error", "Error calculating BMI: " + e.getMessage());
+            request.getRequestDispatcher("BMICalculator.jsp").forward(request, response);
+            return;
+        }
+                
             case "bfp":
                 try {
                     String gender = request.getParameter("gender");
