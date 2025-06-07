@@ -104,7 +104,7 @@ public class HealthFitnessClient extends HttpServlet {
                     double neck = Double.parseDouble(request.getParameter("neck"));
                     double hip = gender.equalsIgnoreCase("female") ? Double.parseDouble(request.getParameter("hip")) : 0;
 
-                    result = calculateBFPLocal(gender, age, weightBFP, heightBFP, waist, neck, hip);
+                    result = calculateBFP(gender, age, weightBFP, heightBFP, waist, neck, hip);
 
                     // Store to session for repopulation if needed
                     session.setAttribute("gender", gender);
@@ -229,20 +229,18 @@ public class HealthFitnessClient extends HttpServlet {
     }
 }
 
-
-
-    private String calculateBFP(java.lang.String arg0, int arg1, double arg2, double arg3, double arg4, double arg5, double arg6) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        com.HealthFitness.client.HealthFitnessService port = service.getHealthFitnessServicePort();
-        return port.calculateBFP(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    }
-
     private String calculateBMI(java.lang.String name, double weight, double heightCm) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         com.HealthFitness.client.HealthFitnessService port = service.getHealthFitnessServicePort();
         return port.calculateBMI(name, weight, heightCm);
+    }
+    
+    private String calculateBFP(java.lang.String gender, int age, double weight, double height, double waist, double neck, double hip) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        com.HealthFitness.client.HealthFitnessService port = service.getHealthFitnessServicePort();
+        return port.calculateBFP(gender, age, weight, height, waist, neck, hip);
     }
 
     private String calculateCaloriesBurned(java.lang.String name, double weight, java.lang.String activity, int durationMinutes, java.lang.String intensity) {
@@ -258,88 +256,6 @@ public class HealthFitnessClient extends HttpServlet {
         com.HealthFitness.client.HealthFitnessService port = service.getHealthFitnessServicePort();
         return port.calculateSleepTimes(ageRange, scheduleType, timeInput);
     }
+
     
-    private String calculateBFPLocal(String gender, int age, double weight, double height, double waist, double neck, double hip) {
-    // Convert to inches for USC method
-    double heightInches = height / 2.54;
-    double waistInches = waist / 2.54;
-    double neckInches = neck / 2.54;
-    double hipInches = hip / 2.54;
-
-    // Calculate BMI
-    double heightM = height / 100.0;
-    double bmi = weight / (heightM * heightM);
-
-    // Calculate BFP using all three methods
-    double bfpBMI = calculateBFPWithBMI(gender, age, bmi);
-    double bfpUSC = calculateBFPWithUSC(gender, waistInches, neckInches, hipInches, heightInches);
-    double bfpSI = calculateBFPWithSI(gender, waist, neck, hip, height);
-
-    // Average body fat
-    double avgBFP = (bfpBMI + bfpUSC + bfpSI) / 3.0;
-    double fatMass = (avgBFP / 100.0) * weight;
-    double leanMass = weight - fatMass;
-
-    // Categories
-    String categoryBMI = getBodyFatCategory(gender, bfpBMI);
-    String categoryUSC = getBodyFatCategory(gender, bfpUSC);
-    String categorySI = getBodyFatCategory(gender, bfpSI);
-
-    // Build formatted HTML result string
-    StringBuilder sb = new StringBuilder();
-    sb.append("<h1>Body Fat Percentage Results</h1>");
-    sb.append("<p>BMI Method: ").append(String.format("%.1f", bfpBMI)).append("% (").append(categoryBMI).append(")</p>");
-    sb.append("<p>US Navy (USC): ").append(String.format("%.1f", bfpUSC)).append("% (").append(categoryUSC).append(")</p>");
-    sb.append("<p>US Navy (SI): ").append(String.format("%.1f", bfpSI)).append("% (").append(categorySI).append(")</p>");
-    sb.append("<p>Average Body Fat: ").append(String.format("%.1f", avgBFP)).append("%</p>");
-    sb.append("<p>Body Fat Mass: ").append(String.format("%.1f", fatMass)).append(" kg</p>");
-    sb.append("<p>Lean Body Mass: ").append(String.format("%.1f", leanMass)).append(" kg</p>");
-
-    return sb.toString();
 }
-
-    private double calculateBFPWithBMI(String gender, int age, double bmi) {
-    if (gender.equalsIgnoreCase("male")) {
-        return (1.20 * bmi) + (0.23 * age) - 16.2;
-    } else {
-        return (1.20 * bmi) + (0.23 * age) - 5.4;
-    }
-    }
-
-    private double calculateBFPWithUSC(String gender, double waist, double neck, double hip, double height) {
-    if (gender.equalsIgnoreCase("male")) {
-        double abdomenNeck = waist - neck;
-        return 86.010 * Math.log10(abdomenNeck) - 70.041 * Math.log10(height) + 36.76;
-    } else {
-        double waistHipNeck = waist + hip - neck;
-        return 163.205 * Math.log10(waistHipNeck) - 97.684 * Math.log10(height) - 78.387;
-    }
-    }
-
-    private double calculateBFPWithSI(String gender, double waist, double neck, double hip, double height) {
-    if (gender.equalsIgnoreCase("male")) {
-        double waistNeck = waist - neck;
-        return (495 / (1.0324 - 0.19077 * Math.log10(waistNeck) + 0.15456 * Math.log10(height))) - 450;
-    } else {
-        double waistHipNeck = waist + hip - neck;
-        return (495 / (1.29579 - 0.35004 * Math.log10(waistHipNeck) + 0.22100 * Math.log10(height))) - 450;
-    }
-    }
-
-    private String getBodyFatCategory(String gender, double bfp) {
-    if (gender.equalsIgnoreCase("male")) {
-        if (bfp < 5) return "Essential fat";
-        if (bfp <= 13) return "Athletes";
-        if (bfp <= 17) return "Fitness";
-        if (bfp <= 24) return "Average";
-        return "Obese";
-    } else {
-        if (bfp < 10) return "Essential fat";
-        if (bfp <= 20) return "Athletes";
-        if (bfp <= 24) return "Fitness";
-        if (bfp <= 31) return "Average";
-        return "Obese";
-    }
-    }
-}
-//try test

@@ -129,11 +129,25 @@ public class MacroCalculatorService {
         
         float proteinPercent, fatPercent, carbPercent;
         switch (goal.toLowerCase()) {
-            case "balanced":
             case "maintain":
+            case "balanced":
                 proteinPercent = 0.30f;
                 fatPercent = 0.25f;
                 carbPercent = 0.45f;
+                break;
+            case "weight gain":
+            case "mild weight gain":
+            case "extreme weight gain":
+                proteinPercent = 0.25f;
+                fatPercent = 0.20f;
+                carbPercent = 0.55f;
+                break;
+            case "weight loss":
+            case "mild weight loss":
+            case "extreme weight loss":
+                proteinPercent = 0.35f;
+                fatPercent = 0.25f;
+                carbPercent = 0.40f;
                 break;
             case "high protein":
                 proteinPercent = 0.40f;
@@ -149,11 +163,6 @@ public class MacroCalculatorService {
                 proteinPercent = 0.30f;
                 fatPercent = 0.20f;
                 carbPercent = 0.50f;
-                break;
-            case "weight gain":
-                proteinPercent = 0.25f;
-                fatPercent = 0.20f;
-                carbPercent = 0.55f;
                 break;
             default:
                 return "Invalid macro type. Use: balanced, high protein, low carb, etc.";

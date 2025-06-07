@@ -16,13 +16,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg4" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg5" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="arg6" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="gender" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="age" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="height" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="waist" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="neck" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="hip" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,142 +33,142 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "calculateBFP", propOrder = {
-    "arg0",
-    "arg1",
-    "arg2",
-    "arg3",
-    "arg4",
-    "arg5",
-    "arg6"
+    "gender",
+    "age",
+    "weight",
+    "height",
+    "waist",
+    "neck",
+    "hip"
 })
 public class CalculateBFP {
 
-    protected String arg0;
-    protected int arg1;
-    protected double arg2;
-    protected double arg3;
-    protected double arg4;
-    protected double arg5;
-    protected double arg6;
+    protected String gender;
+    protected int age;
+    protected double weight;
+    protected double height;
+    protected double waist;
+    protected double neck;
+    protected double hip;
 
     /**
-     * Gets the value of the arg0 property.
+     * Gets the value of the gender property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getArg0() {
-        return arg0;
+    public String getGender() {
+        return gender;
     }
 
     /**
-     * Sets the value of the arg0 property.
+     * Sets the value of the gender property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setArg0(String value) {
-        this.arg0 = value;
+    public void setGender(String value) {
+        this.gender = value;
     }
 
     /**
-     * Gets the value of the arg1 property.
+     * Gets the value of the age property.
      * 
      */
-    public int getArg1() {
-        return arg1;
+    public int getAge() {
+        return age;
     }
 
     /**
-     * Sets the value of the arg1 property.
+     * Sets the value of the age property.
      * 
      */
-    public void setArg1(int value) {
-        this.arg1 = value;
+    public void setAge(int value) {
+        this.age = value;
     }
 
     /**
-     * Gets the value of the arg2 property.
+     * Gets the value of the weight property.
      * 
      */
-    public double getArg2() {
-        return arg2;
+    public double getWeight() {
+        return weight;
     }
 
     /**
-     * Sets the value of the arg2 property.
+     * Sets the value of the weight property.
      * 
      */
-    public void setArg2(double value) {
-        this.arg2 = value;
+    public void setWeight(double value) {
+        this.weight = value;
     }
 
     /**
-     * Gets the value of the arg3 property.
+     * Gets the value of the height property.
      * 
      */
-    public double getArg3() {
-        return arg3;
+    public double getHeight() {
+        return height;
     }
 
     /**
-     * Sets the value of the arg3 property.
+     * Sets the value of the height property.
      * 
      */
-    public void setArg3(double value) {
-        this.arg3 = value;
+    public void setHeight(double value) {
+        this.height = value;
     }
 
     /**
-     * Gets the value of the arg4 property.
+     * Gets the value of the waist property.
      * 
      */
-    public double getArg4() {
-        return arg4;
+    public double getWaist() {
+        return waist;
     }
 
     /**
-     * Sets the value of the arg4 property.
+     * Sets the value of the waist property.
      * 
      */
-    public void setArg4(double value) {
-        this.arg4 = value;
+    public void setWaist(double value) {
+        this.waist = value;
     }
 
     /**
-     * Gets the value of the arg5 property.
+     * Gets the value of the neck property.
      * 
      */
-    public double getArg5() {
-        return arg5;
+    public double getNeck() {
+        return neck;
     }
 
     /**
-     * Sets the value of the arg5 property.
+     * Sets the value of the neck property.
      * 
      */
-    public void setArg5(double value) {
-        this.arg5 = value;
+    public void setNeck(double value) {
+        this.neck = value;
     }
 
     /**
-     * Gets the value of the arg6 property.
+     * Gets the value of the hip property.
      * 
      */
-    public double getArg6() {
-        return arg6;
+    public double getHip() {
+        return hip;
     }
 
     /**
-     * Sets the value of the arg6 property.
+     * Sets the value of the hip property.
      * 
      */
-    public void setArg6(double value) {
-        this.arg6 = value;
+    public void setHip(double value) {
+        this.hip = value;
     }
 
 }
