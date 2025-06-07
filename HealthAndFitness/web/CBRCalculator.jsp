@@ -104,11 +104,12 @@
             <%
                 } else if (cbrResult != null) {
             %>
-                <div class="alert alert-success">
-                    <p class="mb-0"><%= cbrResult %></p>
-                </div>
-                
-                <div class="card mt-4">
+                <%= cbrResult %>                               
+            <%
+                }
+            %>
+            
+            <div class="card mt-4">
                     <div class="card-header bg-secondary text-white">
                         <h5 class="mb-0">User Information</h5>
                     </div>
@@ -121,9 +122,6 @@
                         <p><strong>Height:</strong> <%= height != null ? height + " cm" : "N/A" %></p>
                     </div>
                 </div>
-            <%
-                }
-            %>
             
             <%-- Calories Burned Information Section --%>
             <div class="card mt-4">

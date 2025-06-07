@@ -70,16 +70,9 @@
             <%
                 } else if (bmiResult != null) {
                     
-                    String alertClass = "alert-success"; // default
-                    if (bmiResult.contains("Underweight")) {
-                        alertClass = "alert-warning";
-                    } else if (bmiResult.contains("Overweight") || bmiResult.contains("Obese")) {
-                        alertClass = "alert-danger";
-                    }
+ 
             %>
-                <div class="alert <%= alertClass %>">
-                    <p class="mb-0"><%= bmiResult %></p>
-                </div>              
+                    <%= bmiResult %>      
             <%
                 }
             %>

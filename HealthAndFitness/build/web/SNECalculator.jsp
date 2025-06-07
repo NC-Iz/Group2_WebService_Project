@@ -121,9 +121,13 @@
             <%
                 } else if (sneResult != null) {
             %>
-                <%= sneResult %>
-                
-                <div class="card mt-4">
+                <%= sneResult %>              
+            <%
+                }
+            %>
+            
+            
+            <div class="card mt-4">
                     <div class="card-header bg-secondary text-white">
                         <h5 class="mb-0">User Information</h5>
                     </div>
@@ -136,10 +140,7 @@
                         <p><strong>Height:</strong> <%= height != null ? height + " cm" : "N/A" %></p>
                     </div>
                 </div>
-            <%
-                }
-            %>
-            
+                    
             <%-- Sleep Information Section --%>
             <div class="card mt-4">
                 <div class="card-body">

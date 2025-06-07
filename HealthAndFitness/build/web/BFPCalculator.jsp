@@ -155,12 +155,13 @@
                 <div class="alert alert-danger"><%= error %></div>
             <%
                 } else if (bfpResult != null) {
+            %>             
+                    <%= bfpResult %>               
+            <%
+                }
             %>
-                <div class="alert alert-success">
-                    <%= bfpResult.replace("\n", "<br>") %>
-                </div>
-                
-                <div class="card mt-4">
+            
+            <div class="card mt-4">
                     <div class="card-header bg-secondary text-white">
                         <h5 class="mb-0">User Information</h5>
                     </div>
@@ -173,9 +174,6 @@
                         <p><strong>Height:</strong> <%= height != null ? height + " cm" : "N/A" %></p>
                     </div>
                 </div>
-            <%
-                }
-            %>
             
             <%-- Body Fat Percentage Information Section --%>
             <div class="card mt-4">

@@ -26,6 +26,60 @@ public interface HealthFitnessService {
 
     /**
      * 
+     * @param gender
+     * @param weight
+     * @param waist
+     * @param neck
+     * @param age
+     * @param hip
+     * @param height
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "calculateBFP", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBFP")
+    @ResponseWrapper(localName = "calculateBFPResponse", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBFPResponse")
+    @Action(input = "http://service.HealthFitness.com/HealthFitnessService/calculateBFPRequest", output = "http://service.HealthFitness.com/HealthFitnessService/calculateBFPResponse")
+    public String calculateBFP(
+        @WebParam(name = "gender", targetNamespace = "")
+        String gender,
+        @WebParam(name = "age", targetNamespace = "")
+        int age,
+        @WebParam(name = "weight", targetNamespace = "")
+        double weight,
+        @WebParam(name = "height", targetNamespace = "")
+        double height,
+        @WebParam(name = "waist", targetNamespace = "")
+        double waist,
+        @WebParam(name = "neck", targetNamespace = "")
+        double neck,
+        @WebParam(name = "hip", targetNamespace = "")
+        double hip);
+
+    /**
+     * 
+     * @param name
+     * @param weight
+     * @param heightCm
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "calculateBMI", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBMI")
+    @ResponseWrapper(localName = "calculateBMIResponse", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBMIResponse")
+    @Action(input = "http://service.HealthFitness.com/HealthFitnessService/calculateBMIRequest", output = "http://service.HealthFitness.com/HealthFitnessService/calculateBMIResponse")
+    public String calculateBMI(
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "weight", targetNamespace = "")
+        double weight,
+        @WebParam(name = "heightCm", targetNamespace = "")
+        double heightCm);
+
+    /**
+     * 
      * @param ageRange
      * @param scheduleType
      * @param timeInput
@@ -71,59 +125,5 @@ public interface HealthFitnessService {
         int durationMinutes,
         @WebParam(name = "intensity", targetNamespace = "")
         String intensity);
-
-    /**
-     * 
-     * @param name
-     * @param weight
-     * @param heightCm
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "calculateBMI", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBMI")
-    @ResponseWrapper(localName = "calculateBMIResponse", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBMIResponse")
-    @Action(input = "http://service.HealthFitness.com/HealthFitnessService/calculateBMIRequest", output = "http://service.HealthFitness.com/HealthFitnessService/calculateBMIResponse")
-    public String calculateBMI(
-        @WebParam(name = "name", targetNamespace = "")
-        String name,
-        @WebParam(name = "weight", targetNamespace = "")
-        double weight,
-        @WebParam(name = "heightCm", targetNamespace = "")
-        double heightCm);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     * @param arg6
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "calculateBFP", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBFP")
-    @ResponseWrapper(localName = "calculateBFPResponse", targetNamespace = "http://service.HealthFitness.com/", className = "com.HealthFitness.client.CalculateBFPResponse")
-    @Action(input = "http://service.HealthFitness.com/HealthFitnessService/calculateBFPRequest", output = "http://service.HealthFitness.com/HealthFitnessService/calculateBFPResponse")
-    public String calculateBFP(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        double arg2,
-        @WebParam(name = "arg3", targetNamespace = "")
-        double arg3,
-        @WebParam(name = "arg4", targetNamespace = "")
-        double arg4,
-        @WebParam(name = "arg5", targetNamespace = "")
-        double arg5,
-        @WebParam(name = "arg6", targetNamespace = "")
-        double arg6);
 
 }
