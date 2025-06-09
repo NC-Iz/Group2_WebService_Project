@@ -63,6 +63,37 @@
     </style>
 </head>
 <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Health & Fitness Calculator</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="BMICalculator.jsp">BMI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="BFPCalculator.jsp">Body Fat</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="CBRCalculator.jsp">Calories Burned</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="SNECalculator.jsp">Sleep Need Estimator</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="MacroCalculator.jsp">Macro</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
     <div class="container py-5">
         <div class="card calculator-card">
             <div class="card-header bg-primary text-white">
@@ -183,141 +214,140 @@
                     
                     <h4 class="card-title">Calculation Methods</h4>
         
-        <!-- BMI Method -->
-        <div class="method-section p-3 mb-4 border rounded bg-white">
-            <h5 class="method-header">BMI Method</h5>
-            <p class="method-description">Uses BMI, age and gender to estimate body fat percentage:</p>
-            
-            <div class="formula-container row">
-                <div class="col-md-6">
-                    <div class="formula-box p-3 mb-3 bg-light rounded">
-                        <h6 class="formula-title">For Men:</h6>
-                        <div class="math-formula">
-                            \[ \text{BFP} = (1.20 \times \text{BMI}) + (0.23 \times \text{Age}) - 16.2 \]
+            <!-- BMI Method -->
+            <div class="method-section p-3 mb-4 border rounded bg-white">
+                <h5 class="method-header">BMI Method</h5>
+                <p class="method-description">Uses BMI, age and gender to estimate body fat percentage:</p>
+
+                <div class="formula-container row">
+                    <div class="col-md-6">
+                        <div class="formula-box p-3 mb-3 bg-light rounded">
+                            <h6 class="formula-title">For Men:</h6>
+                            <div class="math-formula">
+                                \[ \text{BFP} = (1.20 \times \text{BMI}) + (0.23 \times \text{Age}) - 16.2 \]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="formula-box p-3 mb-3 bg-light rounded">
+                            <h6 class="formula-title">For Women:</h6>
+                            <div class="math-formula">
+                                \[ \text{BFP} = (1.20 \times \text{BMI}) + (0.23 \times \text{Age}) - 5.4 \]
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="formula-box p-3 mb-3 bg-light rounded">
-                        <h6 class="formula-title">For Women:</h6>
-                        <div class="math-formula">
-                            \[ \text{BFP} = (1.20 \times \text{BMI}) + (0.23 \times \text{Age}) - 5.4 \]
+            </div>
+
+            <!-- US Navy (USC) Method -->
+            <div class="method-section p-3 mb-4 border rounded bg-white">
+                <h5 class="method-header">US Navy Method (USC)</h5>
+                <p class="method-description">Uses circumference measurements in inches:</p>
+
+                <div class="formula-container row">
+                    <div class="col-md-6">
+                        <div class="formula-box p-3 mb-3 bg-light rounded">
+                            <h6 class="formula-title">For Men:</h6>
+                            <div class="math-formula">
+                                \[ \text{BFP} = 86.010 \times \log_{10}(\text{Waist} - \text{Neck}) - 70.041 \times \log_{10}(\text{Height}) + 36.76 \]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="formula-box p-3 mb-3 bg-light rounded">
+                            <h6 class="formula-title">For Women:</h6>
+                            <div class="math-formula">
+                                \[ \text{BFP} = 163.205 \times \log_{10}(\text{Waist} + \text{Hip} - \text{Neck}) - 97.684 \times \log_{10}(\text{Height}) - 78.387 \]
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- US Navy (SI) Method -->
+            <div class="method-section p-3 border rounded bg-white">
+                <h5 class="method-header">US Navy Method (SI)</h5>
+                <p class="method-description">Uses circumference measurements in centimeters:</p>
+
+                <div class="formula-container row">
+                    <div class="col-md-6">
+                        <div class="formula-box p-3 mb-3 bg-light rounded">
+                            <h6 class="formula-title">For Men:</h6>
+                            <div class="math-formula">
+                                \[ \text{BFP} = \frac{495}{1.0324 - 0.19077 \times \log_{10}(\text{Waist} - \text{Neck}) + 0.15456 \times \log_{10}(\text{Height})} - 450 \]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="formula-box p-3 mb-3 bg-light rounded">
+                            <h6 class="formula-title">For Women:</h6>
+                            <div class="math-formula">
+                                \[ \text{BFP} = \frac{495}{1.29579 - 0.35004 \times \log_{10}(\text{Waist} + \text{Hip} - \text{Neck}) + 0.22100 \times \log_{10}(\text{Height})} - 450 \]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <h5 class="mt-4">Body Fat Categories</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover mt-3">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Men</th>
+                                        <th>Women</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Essential Fat</td>
+                                        <td>2-5%</td>
+                                        <td>10-13%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Athletes</td>
+                                        <td>6-13%</td>
+                                        <td>14-20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fitness</td>
+                                        <td>14-17%</td>
+                                        <td>21-24%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Average</td>
+                                        <td>18-24%</td>
+                                        <td>25-31%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Obese</td>
+                                        <td>25%+</td>
+                                        <td>32%+</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="mt-4">Health Implications</h4>
+                        <div class="alert alert-info">
+                            <p>Maintaining a healthy body fat percentage is important for:</p>
+                            <ul class="mb-0">
+                                <li>Optimal metabolic function</li>
+                                <li>Reduced risk of chronic diseases</li>
+                                <li>Improved physical performance</li>
+                                <li>Better hormonal balance</li>
+                            </ul>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Note:</strong> These calculations are estimates. For precise measurements, consider professional methods like DEXA scans or hydrostatic weighing.
+                        </div>
+                    </div>
+                </div>    
             </div>
         </div>
 
-        <!-- US Navy (USC) Method -->
-        <div class="method-section p-3 mb-4 border rounded bg-white">
-            <h5 class="method-header">US Navy Method (USC)</h5>
-            <p class="method-description">Uses circumference measurements in inches:</p>
-            
-            <div class="formula-container row">
-                <div class="col-md-6">
-                    <div class="formula-box p-3 mb-3 bg-light rounded">
-                        <h6 class="formula-title">For Men:</h6>
-                        <div class="math-formula">
-                            \[ \text{BFP} = 86.010 \times \log_{10}(\text{Waist} - \text{Neck}) - 70.041 \times \log_{10}(\text{Height}) + 36.76 \]
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="formula-box p-3 mb-3 bg-light rounded">
-                        <h6 class="formula-title">For Women:</h6>
-                        <div class="math-formula">
-                            \[ \text{BFP} = 163.205 \times \log_{10}(\text{Waist} + \text{Hip} - \text{Neck}) - 97.684 \times \log_{10}(\text{Height}) - 78.387 \]
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- US Navy (SI) Method -->
-        <div class="method-section p-3 border rounded bg-white">
-            <h5 class="method-header">US Navy Method (SI)</h5>
-            <p class="method-description">Uses circumference measurements in centimeters:</p>
-            
-            <div class="formula-container row">
-                <div class="col-md-6">
-                    <div class="formula-box p-3 mb-3 bg-light rounded">
-                        <h6 class="formula-title">For Men:</h6>
-                        <div class="math-formula">
-                            \[ \text{BFP} = \frac{495}{1.0324 - 0.19077 \times \log_{10}(\text{Waist} - \text{Neck}) + 0.15456 \times \log_{10}(\text{Height})} - 450 \]
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="formula-box p-3 mb-3 bg-light rounded">
-                        <h6 class="formula-title">For Women:</h6>
-                        <div class="math-formula">
-                            \[ \text{BFP} = \frac{495}{1.29579 - 0.35004 \times \log_{10}(\text{Waist} + \text{Hip} - \text{Neck}) + 0.22100 \times \log_{10}(\text{Height})} - 450 \]
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                    
-                    <h5 class="mt-4">Body Fat Categories</h5>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover mt-3">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Men</th>
-                                    <th>Women</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Essential Fat</td>
-                                    <td>2-5%</td>
-                                    <td>10-13%</td>
-                                </tr>
-                                <tr>
-                                    <td>Athletes</td>
-                                    <td>6-13%</td>
-                                    <td>14-20%</td>
-                                </tr>
-                                <tr>
-                                    <td>Fitness</td>
-                                    <td>14-17%</td>
-                                    <td>21-24%</td>
-                                </tr>
-                                <tr>
-                                    <td>Average</td>
-                                    <td>18-24%</td>
-                                    <td>25-31%</td>
-                                </tr>
-                                <tr>
-                                    <td>Obese</td>
-                                    <td>25%+</td>
-                                    <td>32%+</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <h4 class="mt-4">Health Implications</h4>
-                    <div class="alert alert-info">
-                        <p>Maintaining a healthy body fat percentage is important for:</p>
-                        <ul class="mb-0">
-                            <li>Optimal metabolic function</li>
-                            <li>Reduced risk of chronic diseases</li>
-                            <li>Improved physical performance</li>
-                            <li>Better hormonal balance</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="alert alert-warning">
-                        <strong>Note:</strong> These calculations are estimates. For precise measurements, consider professional methods like DEXA scans or hydrostatic weighing.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
