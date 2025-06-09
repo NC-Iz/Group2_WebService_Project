@@ -9,6 +9,9 @@
 
     String cbrResult = (String) request.getAttribute("cbrResult");
     String error = (String) request.getAttribute("error");
+    String activity = request.getParameter("activity");
+    String intensity = request.getParameter("intensity");
+    String duration = request.getParameter("duration");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,23 +97,24 @@
                             <div class="mb-3">
                                 <label for="activity" class="form-label">Activity:</label>
                                 <select class="form-select" id="activity" name="activity" required>
-                                    <option value="" disabled selected>Choose activity</option>
-                                    <option value="walking">Walking</option>
-                                    <option value="running">Running</option>
-                                    <option value="cycling">Cycling</option>
-                                    <option value="swimming">Swimming</option>
-                                    <option value="weightlifting">Weightlifting</option>
+                                    <option value="" disabled <%= activity == null ? "selected" : "" %>>Choose activity</option>
+                                    <option value="walking" <%= "walking".equals(activity) ? "selected" : "" %>>Walking</option>
+                                    <option value="running" <%= "running".equals(activity) ? "selected" : "" %>>Running</option>
+                                    <option value="cycling" <%= "cycling".equals(activity) ? "selected" : "" %>>Cycling</option>
+                                    <option value="swimming" <%= "swimming".equals(activity) ? "selected" : "" %>>Swimming</option>
+                                    <option value="weightlifting" <%= "weightlifting".equals(activity) ? "selected" : "" %>>Weightlifting</option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="intensity" class="form-label">Intensity:</label>
                                 <select class="form-select" id="intensity" name="intensity" required>
-                                    <option value="" disabled selected>Select intensity</option>
-                                    <option value="low">Low</option>
-                                    <option value="moderate">Moderate</option>
-                                    <option value="high">High</option>
+                                    <option value="" disabled <%= intensity == null ? "selected" : "" %>>Select intensity</option>
+                                    <option value="low" <%= "low".equals(intensity) ? "selected" : "" %>>Low</option>
+                                    <option value="moderate" <%= "moderate".equals(intensity) ? "selected" : "" %>>Moderate</option>
+                                    <option value="high" <%= "high".equals(intensity) ? "selected" : "" %>>High</option>
                                 </select>
                             </div>
                         </div>
@@ -118,8 +122,10 @@
 
                     <div class="mb-3">
                         <label for="duration" class="form-label">Duration (minutes):</label>
-                        <input type="number" class="form-control" id="duration" name="duration" step="1" min="1" required>
+                        <input type="number" class="form-control" id="duration" name="duration" step="1" min="1"
+                               value="<%= duration != null ? duration : "" %>" required>
                     </div>
+
 
                     <button type="submit" class="btn btn-primary w-100">Calculate Calories Burned</button>
                 </form>
