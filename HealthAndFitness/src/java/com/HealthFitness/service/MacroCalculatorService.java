@@ -149,21 +149,6 @@ public class MacroCalculatorService {
                 fatPercent = 0.25f;
                 carbPercent = 0.40f;
                 break;
-            case "high protein":
-                proteinPercent = 0.40f;
-                fatPercent = 0.30f;
-                carbPercent = 0.30f;
-                break;
-            case "low carb":
-                proteinPercent = 0.35f;
-                fatPercent = 0.40f;
-                carbPercent = 0.25f;
-                break;
-            case "low fat":
-                proteinPercent = 0.30f;
-                fatPercent = 0.20f;
-                carbPercent = 0.50f;
-                break;
             default:
                 return "Invalid macro type. Use: balanced, high protein, low carb, etc.";
         }

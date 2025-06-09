@@ -54,14 +54,13 @@ public class MacroCalculatorClient extends HttpServlet {
 
             String macroStr = macroDistribution(Float.parseFloat(goalCaloriesStr), goal);
 
-            //Display Results
-            out.println("<html><head><title>Macro Calculator Results</title></head><body>");
-            out.println("<h2>Macro Calculator Results</h2>");
-            out.println("<p><strong>Basal Metabolic Rate (BMR):</strong> " + bmrStr + " kcal/day</p>");
-            out.println("<p><strong>Total Daily Energy Expenditure (TDEE):</strong> " + tdeeStr + " kcal/day</p>");
-            out.println("<p><strong>Calories for Goal:</strong> " + goalCaloriesStr + " kcal/day</p>");
-            out.println("<p><strong>Macronutrient Breakdown:</strong> " + macroStr + "</p>");
-            out.println("</body></html>");
+            request.setAttribute("bmrResult", bmrStr);
+        request.setAttribute("tdeeResult", tdeeStr);
+        request.setAttribute("caloriesResult", goalCaloriesStr);
+        request.setAttribute("macroResult", macroStr);
+
+        // Forward to JSP
+        request.getRequestDispatcher("MacroCalculator.jsp").forward(request, response);
         } catch (Exception e) {
             // Basic error handling
             try (PrintWriter out = response.getWriter()) {

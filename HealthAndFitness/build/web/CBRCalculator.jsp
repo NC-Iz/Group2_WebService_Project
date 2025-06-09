@@ -32,6 +32,37 @@
     </style>
 </head>
 <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Health & Fitness Calculator</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="BMICalculator.jsp">BMI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="BFPCalculator.jsp">Body Fat</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="CBRCalculator.jsp">Calories Burned</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="SNECalculator.jsp">Sleep Need Estimator</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="MacroCalculator.jsp">Macro</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
     <div class="container py-5">
         <div class="card calculator-card">
             <div class="card-header bg-primary text-white">
