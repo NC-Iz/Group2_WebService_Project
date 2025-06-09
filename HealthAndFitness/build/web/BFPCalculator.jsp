@@ -9,6 +9,9 @@
 
     String bfpResult = (String) request.getAttribute("bfpResult");
     String error = (String) request.getAttribute("error");
+    String neck = request.getParameter("neck");
+    String waist = request.getParameter("waist");
+    String hip = request.getParameter("hip");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,19 +159,22 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="neck" class="form-label">Neck (cm):</label>
-                                <input type="number" class="form-control" id="neck" name="neck" step="0.1" min="1" required>
+                                <input type="number" class="form-control" id="neck" name="neck" step="0.1" min="1"
+                                       value="<%= neck != null ? neck : "" %>" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="waist" class="form-label">Waist (cm):</label>
-                                <input type="number" class="form-control" id="waist" name="waist" step="0.1" min="1" required>
+                                <input type="number" class="form-control" id="waist" name="waist" step="0.1" min="1"
+                                       value="<%= waist != null ? waist : "" %>" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3" id="hipGroup" style="display: <%= "female".equalsIgnoreCase(gender) ? "block" : "none" %>;">
                                 <label for="hip" class="form-label">Hip (cm):</label>
-                                <input type="number" class="form-control" id="hip" name="hip" step="0.1" min="1">
+                                <input type="number" class="form-control" id="hip" name="hip" step="0.1" min="1"
+                                       value="<%= hip != null ? hip : "" %>">
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,8 @@
     
     String sneResult = (String) request.getAttribute("sneResult");
     String error = (String) request.getAttribute("error");
+    String scheduleType = request.getParameter("scheduleType");
+    String timeInput = request.getParameter("timeInput");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,20 +125,26 @@
 
                     <div class="mb-3">
                         <label class="form-label">Sleep Schedule Type</label><br>
+
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="scheduleType" value="wakeUp" id="wakeUp" checked>
+                            <input class="form-check-input" type="radio" name="scheduleType" value="wakeUp" id="wakeUp"
+                                   <%= "wakeUp".equals(scheduleType) || scheduleType == null ? "checked" : "" %>>
                             <label class="form-check-label" for="wakeUp">I want to wake up at...</label>
                         </div>
+
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="scheduleType" value="goToBed" id="goToBed">
+                            <input class="form-check-input" type="radio" name="scheduleType" value="goToBed" id="goToBed"
+                                   <%= "goToBed".equals(scheduleType) ? "checked" : "" %>>
                             <label class="form-check-label" for="goToBed">I want to go to bed at...</label>
                         </div>
                     </div>
 
                     <div class="mb-4">
                         <label for="timeInput" class="form-label">Time</label>
-                        <input type="time" class="form-control" id="timeInput" name="timeInput" required>
+                        <input type="time" class="form-control" id="timeInput" name="timeInput"
+                               value="<%= timeInput != null ? timeInput : "" %>" required>
                     </div>
+
 
                     <button type="submit" class="btn btn-primary w-100">Estimate Sleep Times</button>
                 </form>
