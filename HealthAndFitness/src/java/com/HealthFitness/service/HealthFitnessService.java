@@ -11,6 +11,13 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 
+import javax.xml.namespace.QName;
+import javax.xml.soap.SOAPFactory;
+import javax.xml.soap.SOAPFault;
+import javax.xml.ws.soap.SOAPFaultException;
+import javax.xml.soap.SOAPException;
+
+
 /**
  *
  * @author faiza
@@ -41,8 +48,16 @@ public String calculateBMI(
 
     // Input validation
     if (heightCm <= 0 || weight <= 0) {
-        return "SOAP Fault: Invalid input. Height and Weight must be positive numbers.";
+    try {
+        SOAPFault fault = SOAPFactory.newInstance().createFault(
+            "Invalid input: Height and Weight must be positive.",
+            new QName("Client")
+        );
+        throw new SOAPFaultException(fault);
+    } catch (SOAPException e) {
+        throw new RuntimeException("SOAP Fault could not be created", e);
     }
+}
 
     // Convert cm to meters
     double heightInMeters = heightCm / 100.0;

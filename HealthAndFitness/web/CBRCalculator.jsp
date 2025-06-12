@@ -86,7 +86,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="weight" class="form-label">Weight (kg):</label>
-                                <input type="number" class="form-control" id="weight" name="weight" step="0.1" 
+                                <input type="number" class="form-control" id="weight" name="weight" step="0.1" min="0.1" max="700"
                                        value="<%= weight != null ? weight : "" %>" required>
                             </div>
                         </div>
