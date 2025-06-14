@@ -96,6 +96,8 @@ public String calculateBMI(
         double targetWeight = 24.9 * heightInMeters * heightInMeters;
         suggestion = " You may consider losing around " + String.format("%.1f", (weight - targetWeight)) +
                      " kg to reach a normal BMI.";
+    } else {
+        suggestion = "Great! Your BMI is in the normal range. Maintain your current lifestyle with regular exercise and balanced nutrition.";
     }
 
     StringBuilder result = new StringBuilder();
