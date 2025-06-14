@@ -110,7 +110,7 @@ public String calculateBMI(
 
     // Body
     result.append("<div style='padding: 20px;'>");
-    result.append("<p style='color: #6c757d;'>Hello <strong>").append(name).append("</strong>, based on your input:</p>");
+    result.append("<p>Hello <strong>").append(name).append("</strong>, based on your input:</p>");
     result.append("<ul style='list-style: none; padding-left: 0;'>");
     result.append("<li style='margin-bottom: 8px;'>📏 <strong>Height:</strong> ")
           .append(String.format("%.1f", heightCm)).append(" cm</li>");
@@ -120,8 +120,7 @@ public String calculateBMI(
 
     // BMI Result
     result.append("<p><strong>✅ Your BMI is:</strong> ")
-          .append("<span style='color: #007bff;'>")
-          .append(String.format("%.2f", bmi)).append("</span></p>");
+          .append(String.format("%.2f", bmi)).append("</p>");
 
     result.append("<p><strong>📊 Category:</strong> ")
           .append(category).append("</p>");
@@ -402,7 +401,7 @@ public String calculateCaloriesBurned(
         int optimalSleep = (maxSleep + minSleep) / 2;
         int optimalBedtime = inputTotalMinutes - (optimalSleep * 60) - 15;
         result.append("<p><strong>✅ Optimal bedtime (").append(optimalSleep).append(" hrs):</strong> ")
-              .append("<span style='color: #007bff;'>").append(formatTime(optimalBedtime)).append("</span></p>");
+              .append("<span>").append(formatTime(optimalBedtime)).append("</span></p>");
 
     } else {
         result.append("<h4 style='margin-top: 0;'>If you go to bed at <strong>")
@@ -422,7 +421,7 @@ public String calculateCaloriesBurned(
         int optimalSleep = (maxSleep + minSleep) / 2;
         int optimalWakeTime = inputTotalMinutes + (optimalSleep * 60) + 15;
         result.append("<p><strong>✅ Optimal wake time (").append(optimalSleep).append(" hrs):</strong> ")
-              .append("<span style='color: #007bff;'>").append(formatTime(optimalWakeTime)).append("</span></p>");
+              .append("<span>").append(formatTime(optimalWakeTime)).append("</span></p>");
     }
 
     result.append("<div style='margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;'>");
