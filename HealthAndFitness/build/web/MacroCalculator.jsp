@@ -160,7 +160,7 @@
                 } else if (bmrResult != null) {
             %>
                 <div class="card mb-4">
-                    <div class="card-header bg-success text-white">
+                    <div class="card-header" style="background-color: #28a745; color: white; padding: 15px;">
                         <h4 class="mb-0">Macro Calculation Results</h4>
                     </div>
                     <div class="card-body">
